@@ -72,7 +72,7 @@ while not done:
         #if event.type == pygame.JOYBUTTONDOWN:
          #   print("Ricky Bolzoni")
         #if event.type == pygame.JOYBUTTONUP:
-         #   print("GIovanni Zametta")
+         #   print("Cimeo")
  
     # DRAWING STEP
     # First, clear the screen to white. Don't put other drawing commands
