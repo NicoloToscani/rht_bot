@@ -134,11 +134,11 @@ GPIO.setup(in1B, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(in2B, GPIO.OUT, initial=GPIO.LOW)
 
 # Motor speed (max speed is 100)
-motorSpeed_A = 100
-motorSpeed_B = 100
+motorSpeed_A = 0
+motorSpeed_B = 0
     
-p1 = GPIO.PWM(pwmA, 80)
-p2 = GPIO.PWM(pwmB, 80)
+p1 = GPIO.PWM(pwmA, 50)
+p2 = GPIO.PWM(pwmB, 50)
 
 p1.start(motorSpeed_A)
 p2.start(motorSpeed_B)
@@ -193,13 +193,26 @@ while not done:
             axis = joystick.get_axis(i)
             textPrint.print(screen, "Axis {} value: {:>6.3f}".format(i, axis))
             if(i == 1 and axis == -1):
-                print("freccia alta")
+                print("UP")
             elif(i == 1 and axis > 0):
-                print("freccia bassa")
+                print("DOWN")
             elif(i == 0 and axis == -1):
-                print("freccia sinistra")
+                print("LEFT")
+                motorSpeed_A = 50
+                motorSpeed_B = 100
+                print('Motor spreed A: ' + str(motorSpeed_A))
+                print('Motor spreed B: ' + str(motorSpeed_B))
             elif(i == 0 and axis > 0):
-                print("freccia destra")
+                print("RIGHT")
+                motorSpeed_A = 100
+                motorSpeed_B = 50
+                print('Motor spreed A: ' + str(motorSpeed_A))
+                print('Motor spreed B: ' + str(motorSpeed_B))
+            elif(i == 0 and axis == 0):
+                motorSpeed_A = 100
+                motorSpeed_B = 100
+                print('Motor spreed A: ' + str(motorSpeed_A))
+                print('Motor spreed B: ' + str(motorSpeed_B))
         textPrint.unindent()
  
         buttons = joystick.get_numbuttons()
